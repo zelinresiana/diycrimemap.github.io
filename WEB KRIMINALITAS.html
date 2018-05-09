@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Jakarta Railway Map</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="./Jakarta Railway Map_files/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="./Jakarta Railway Map_files/landing-page.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="./Jakarta Railway Map_files/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="./Jakarta Railway Map_files/css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<link rel="stylesheet" href="./Jakarta Railway Map_files/leaflet.css">
+	<script src="./Jakarta Railway Map_files/leaflet.js.download"></script>
+	<style>
+		#screen {
+	width: 1700px;
+	height: 600px;
+	}
+	
+.dropbtn {
+    background-color: #3182bd;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3182bd;
+}
+
+
+	</style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand topnav" href="https://jakartarailwaymap.github.io/#"><img src="./Jakarta Railway Map_files/logo_ugm.gif" alt="logo"></a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="https://jakartarailwaymap.github.io/#about">Beranda</a>
+                    </li>
+                    <li>
+					<div class="dropdown">
+						<button class="dropbtn">Peta</button>
+						<div class="dropdown-content">
+						<a href="https://jakartarailwaymap.github.io/#petunjuk">Petunjuk</a>
+						<a href="http://jakartarailwaymap.github.io/peta_skematik">Peta Skematik</a>
+						<a href="http://jakartarailwaymap.github.io/peta_geometrik">Peta Geometrik</a>
+						</div>
+					</div>
+                    </li>
+					<li>
+                        <a href="https://jakartarailwaymap.github.io/#services">Tentang</a>
+                    </li>
+                    <li>
+                        <a href="https://jakartarailwaymap.github.io/#contact">Kontak</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+    <!-- Header -->
+    <a name="about"></a>
+    <div class="intro-header">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                        <h1><b>Jakarta Railway Map</b></h1>
+                        <h3><b>Peta Jaringan Jalur Kereta Api <i>Commuter Line</i> Jabodetabek</b></h3>
+                        <hr class="intro-divider">
+                        <ul class="list-inline intro-social-buttons">
+                            <li>
+                                <a href="http://jakartarailwaymap.github.io/peta_skematik" class="btn btn-default btn-lg"><span class="network-name">PETA SKEMATIK</span></a>
+                            </li>
+							<li>
+                                <a href="https://jakartarailwaymap.github.io/#petunjuk" class="btn btn-default btn-lg"><span class="network-name">PETUNJUK</span></a>
+                            </li>
+							<li>
+                                <a href="http://jakartarailwaymap.github.io/peta_geometrik" class="btn btn-default btn-lg"><span class="network-name">PETA GEOMETRIK</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.intro-header -->
+
+    <!-- Page Content -->
+	<!-- /.content-section-a -->
+
+    <a name="petunjuk"></a>
+    <div class="content-section-a">
+
+        <div class="container">
+		<div class="section-header">
+            <h2 class="col-lg-6 col-md-offset-3 text-center wrap_title"><p style="font-size:50px;font-family:Britannic Bold;color:#3182bd;">PETUNJUK</p></h2>
+        </div>
+            <div class="row text-center">
+            <div class="col-sm-12 col-xs-6">
+			<br>
+			<p style="font-family:Lucida Fax;font-size:30px;">Perbedaan</p>
+				<hr class="intro-divider">
+                <b>"<u>Peta Skematik</u>"<b> adalah peta yang memiliki karakteristik berupa garis lurus skematik yang menggunakan sudut tertentu seperti 45 derajat atau 90 derajat serta berfungsi untuk menampilkan informasi penggunaan seperti sistem transportasi. Peta skematik memiliki bentuk dan pola yang berbeda dari kenampakannya di permukaan bumi. Sedangkan <b>"<u>Peta Geometrik</u>"</b> adalah gambaran permukaan bumi sebenarnya yang ditampilkan dalam bidang datar dengan skala tertentu dan dilengkapi simbol untuk memberikan informasi penggunaannya. <i>Web</i> ini menampilkan peta jaringan jalur kereta api di wilayah Jakarta dan Banten dalam bentuk skematik dan geometrik sehingga kedua peta memiliki tampilan yang berbeda sesuai penggunaanya.
+            <br>
+			<br>
+			<p style="font-family:Lucida Fax;font-size:30px;">Peta Skematik</p>
+				<hr class="intro-divider">
+                    Peta skematik dalam <i>web</i> ini menampilkan peta skematik dari jaringan jalur kereta api di wilayah Jakarta dan Banten. Pengguna dapat mengetahui jalur Kereta api Commuter Line Jabodetabek (KCJ) dari warna jalur yang berbeda - beda yang dijelaskan pada legenda peta skematik ini. Setiap pengguna juga dapat melihat <b>"<u>Jadwal KCJ</u>"<p></p> dengan mengklik salah satu jalur dari peta skematik ini kemudian mengunduh jadwal tersebut baik untuk perjalanan pergi maupun perjalanan pulang.
+                    <p></p>
+					 <br>
+			<p style="font-family:Lucida Fax;font-size:30px;">Peta Geometrik</p>
+				<hr class="intro-divider">
+					Peta geometrik dalam <i>web</i> ini menampilkan peta geometrik dari jaringan jalur kereta api di wilayah Jakarta dan Banten sesuai dengan kenyataannya di dunia nyata. Petunjuk penggunaannya:<br>
+					<p align="left">
+					</p><li align="left">Pengguna dapat memilih layar yang ditampilkan dari legenda dengan menghilangkan atau memberi centang pada kotak legenda. Pada kotak legenda juga menampilkan informasi dari warna yang ditampilkan pada peta</li>
+					<li align="left">Setiap pengguna dapat melakukan scrolling, zooming, dan panning dari dari layar muka peta</li>
+					<li align="left">Titik - titik putih yang bergerak pada layar muka utama peta merupakan tampilan kereta yang bergerak sesuai dengan waktu perjalanan Kereta api Commuter line Jabodetabek (KCJ)</li>
+					<li align="left">Grafik waktu yang terletak di bawah peta menunjukkan grafik perjalanan Kereta api Commuter line Jabodetabek (KCJ) dalam rentang waktu 24 jam sehari. Pengguna dapat menjalankan atau memberhentikan gerakan secara otomatis. Sekaligus pengguna dapat memilih waktu perjalanan yang ingin ditampilkan</li>
+					<li align="left">Pada sebelah kiri peta terdapat fungsi analisis. Terdapat empat fungsi analisis yaitu jalur perjalanan, rata - rata jarak, kelompok stasiun dan kelas stasiun</li>
+					<li align="left">Setiap pengguna dapat memilih salah satu pilihan nilai atau lebih dari masing - masing fungsi analisis yang terdapat pada fungsi analisis tersebut dan melihat hasilnya langsung dari muka peta</li>
+					<li align="left">Jika pengguna ingin mengetahui ada tidaknya KCJ pada waktu tertentu, maka yang pertama dilakukan adalah memilih jalurnya, kemudian menentukan waktunya dan mengklik stasiun dimana pengguna berada</li>
+					<p></p>
+					
+            </b></b></b></div><b><b><b>
+        </b></b></b></div><b><b><b>
+        </b></b></b></div><b><b><b>
+    <!-- /.container -->
+
+    </b></b></b></div><b><b><b>
+	
+	<a name="services"></a>
+    <div class="content-section-a">
+
+        <div class="container">
+		<div class="section-header">
+			<h2 class="col-lg-6 col-md-offset-3 text-center wrap_title"><p style="font-size:50px;font-family:Britannic Bold;color:#3182bd;">TENTANG</p></h2>
+	     </div>
+            <div class="row text-center">
+            <div class="col-sm-12 col-xs-6">
+                <div class="wow fadeInUp" data-wow-duration="400ms" data-wow-delay="0ms">
+                    <br>
+					<p style="font-family:Lucida Fax;font-size:30px;">Latar Belakang</p>
+					<hr class="intro-divider">
+                    Infrastruktur transportasi secara tidak langsung mempengaruhi pelaksanaan pembangunan di dalam suatu negara dalam mendukung pengambilan keputusan. Kereta api merupakan sarana transportasi yang efektif dan efisisen dalam mendukung aktivitas masyarakat di Indonesia. Kereta api dapat menampung penumpang dalam jumlah banyak dan berpindah dari suatu daerah ke daerah lain dengan waktu tempuh yang relatif cepat. Peningkatan pelayanan jaringan jalan kereta api difokuskan dengan memberikan kemudahan untuk mengakses perjalanan kereta api melalui <i>web</i>. Informasi perjalanan kereta api ditampilkan dalam bentuk peta online interaktif jaringan jalur kereta api dilengkapi analisis visual spatio temporal. Analisis visual bertujuan untuk menggabungkan kekuatan pengolahan data dari manusia dan komputasi dimana keduanya bekerja sama secara grafis untuk tercapainya pemahaman oleh pengguna. Halaman <i>web</i> ini merupakan hasil penelitian yang dilakukan untuk memenuhi syarat tugas akhir perkuliahan yang berjudul <i>"<u>Analisis Visual Spatio-Temporal untuk Jaringan Jalur Kereta Api dalam Peta Online Interaktif (Studi Kasus: Jaringan Jalur Kereta Api di Wilayah Jakarta dan Banten)</u>".</i>
+                    <br>
+					<br>
+					<p style="font-family:Lucida Fax;font-size:30px;">Tujuan</p>
+					<hr class="intro-divider">
+                    <p align="left">1. Menghasilkan peta tentang jalur kereta api berbasis analisis visual dan spatio temporal melalui media web secara interaktif
+                        <br>2. Menampilkan peta perjalanan Kereta Api Commuter Line (KRL) Jakarta dengan informasi waktu jadwal perjalanan dan lokasi
+                        <br>3. Mendukung peta - peta tentang jalur kereta api di wilayah Jakarta dan Banten yang telah ada
+						<br>4. Membuat peta online interaktif dengan tampilan menarik dan mudah diakses oleh masyarakat
+                    </p>
+					<br>
+					<p style="font-family:Lucida Fax;font-size:30px;">Target Pengguna</p>
+					<hr class="intro-divider">
+					<p align="left">
+					1. Pengambil kebijakan yang dapat digunakan sebagai sarana untuk mendukung pengambilan keputusan
+					<br>2. Peneliti yang memiliki ketertarikan dengan bidang perkeretaapian, analisis visual, spatio temporal dan bidang web geospasial
+					<br>3. Masyarakat umum yang membutuhkan informasi lokasi dan waktu dari perjalanan Kereta Api <i>Commuter Line</i> Jabodetabek (KCJ) dengan tambahan fungsi analisis
+					</p>
+					<br>
+					<p style="font-family:Lucida Fax;font-size:30px;">Sumber Data</p>
+					<hr class="intro-divider">
+					<p align="left">
+					1. Direktorat Perkeretaapian Kementerian Perhubungan RI
+					<br>2. PT KAI <i>Commuter</i> Jabodetabek
+					</p>					
+                </div>
+            </div>
+        </div>
+        </div>
+        <!-- /.container -->
+
+    </div>
+    
+    <!-- /.content-section-a -->
+
+	<a name="contact"></a>
+
+    <div id="peta" class="content-section-a">
+        <div class="col-md-6 col-md-offset-3 text-center wrap_title ">
+        <h2 style="font-size:40px;font-family:Britannic Bold;color:#3182bd;">INFORMASI KONTAK </h2>
+		<p class="lead" style="margin-top:0"></p><h4>"Febrian Fitryanik Susanta"</h4><h5>Mahasiswa S1 Teknik Geodesi UGM<br>Jl. Grafika No.2 Yogyakarta<br><i>febrian.fitryanik.s@mail.ugm.ac.id</i></h5><p></p><i>
+        <div class="container">
+        </div>
+        </i></div><i>
+        <div id="screen"></div>
+
+	<script>
+   var screen = L.map('screen',{
+		center: [-7.7653747, 110.3723658],
+		zoom: 15
+		});
+
+				L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+	subdomains: 'abcd',
+	}).addTo(screen);
+
+		var marker = L.marker([-7.7653747, 110.3723658]).bindPopup('<center><b>Kampus Teknik Geodesi UGM</b><img src="http://teknikgeomatika.sv.ugm.ac.id/images/geodesi-300x225.jpg" alt="Teknik Geodesi" style="width:300px;height:150px;"></center>').addTo(screen);
+		
+	</script>
+
+	</i></div><i>
+	<div class="morph-button wow pulse morph-button-inflow morph-button-inflow-1">
+		<button type="button "></button>
+
+
+	</div>
+    <!-- /.banner -->
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="https://jakartarailwaymap.github.io/#">Beranda</a>
+                        </li>
+                        <li class="footer-menu-divider">⋅</li>
+                        <li>
+                            <a href="https://jakartarailwaymap.github.io/#services">Tentang</a>
+                        </li>
+                        <li class="footer-menu-divider">⋅</li>
+                        <li>
+                            <a href="https://jakartarailwaymap.github.io/#petunjuk">Petunjuk</a>
+                        </li>
+                        <li class="footer-menu-divider">⋅</li>
+                        <li>
+                            <a href="https://jakartarailwaymap.github.io/#contact">Kontak</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="./Jakarta Railway Map_files/jquery.js.download"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="./Jakarta Railway Map_files/bootstrap.min.js.download"></script>
+
+
+
+
+</i></b></b></b></body></html>
